@@ -6,9 +6,9 @@ import java.util.List;
 
 public class CatalogPOJO {
     private String name;
-    private List<Item> children;
+    private List<ItemPOJO> children;
 
-    public CatalogPOJO(@JsonProperty("name") String name, @JsonProperty("children")List<Item> children){
+    public CatalogPOJO(@JsonProperty("name") String name, @JsonProperty("children")List<ItemPOJO> children){
         this.name = name;
         this.children = children;
     }
@@ -21,11 +21,11 @@ public class CatalogPOJO {
         this.name = name;
     }
 
-    public List<Item> getChildren() {
+    public List<ItemPOJO> getChildren() {
         return children;
     }
 
-    public void setChildren(List<Item> children) {
+    public void setChildren(List<ItemPOJO> children) {
         this.children = children;
     }
 
@@ -35,7 +35,7 @@ public class CatalogPOJO {
 
         s.append(this.name).append("\n");
 
-        for(Item item : children)
+        for(ItemPOJO item : children)
             s.append(item.toString()).append("\n");
 
         return s.toString();

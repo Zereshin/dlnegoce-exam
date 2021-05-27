@@ -5,14 +5,14 @@ import org.springframework.util.StringUtils;
 
 import java.util.List;
 
-public class Item {
+public class ItemPOJO {
     private String code;
     private String path;
     private String name;
     private int count;
-    private List<Item> children;
+    private List<ItemPOJO> children;
 
-    public Item(@JsonProperty("code") String code, @JsonProperty("path") String path, @JsonProperty("name") String name, @JsonProperty("count") int count, @JsonProperty("children") List<Item> children) {
+    public ItemPOJO(@JsonProperty("code") String code, @JsonProperty("path") String path, @JsonProperty("name") String name, @JsonProperty("count") int count, @JsonProperty("children") List<ItemPOJO> children) {
         this.code = code;
         this.path = path;
         this.name = name;
@@ -52,11 +52,11 @@ public class Item {
         this.count = count;
     }
 
-    public List<Item> getChildren() {
+    public List<ItemPOJO> getChildren() {
         return children;
     }
 
-    public void setChildren(List<Item> children) {
+    public void setChildren(List<ItemPOJO> children) {
         this.children = children;
     }
 
@@ -67,7 +67,7 @@ public class Item {
         s.append(String.format("%" + StringUtils.countOccurrencesOf(this.path, "/") + "s", (children.isEmpty())?"|":"-"));
         s.append(this.name).append((this.children.isEmpty())?" " + this.count:"").append("\n");
 
-        for(Item item : children)
+        for(ItemPOJO item : children)
             s.append(item.toString());
 
         return s.toString();
